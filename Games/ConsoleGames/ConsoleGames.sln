@@ -1,7 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01. FallingRocks", "01. FallingRocks\01. FallingRocks.csproj", "{F76A2058-7E94-4B21-8F66-AA5AA661705A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F76A2058-7E94-4B21-8F66-AA5AA661705A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76A2058-7E94-4B21-8F66-AA5AA661705A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76A2058-7E94-4B21-8F66-AA5AA661705A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76A2058-7E94-4B21-8F66-AA5AA661705A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

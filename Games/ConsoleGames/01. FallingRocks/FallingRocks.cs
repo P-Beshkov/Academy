@@ -6,6 +6,7 @@
 //Implement collision detection and scoring system.
 
 using System;
+using System.Threading;
 
 class FallingRocks
 {
@@ -171,7 +172,7 @@ class FallingRocks
             rock.CheckCollision();
             Console.SetCursorPosition(0, 0);
             Console.Write("Score: " + score);
-            //Thread.Sleep(150);
+            Thread.Sleep(150);
             score += 10;
         }
     }
