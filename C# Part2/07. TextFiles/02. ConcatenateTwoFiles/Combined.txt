@@ -1,0 +1,6 @@
+some lines
+from first
+file
+another lines
+from second file
+

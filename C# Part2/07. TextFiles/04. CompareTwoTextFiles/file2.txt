@@ -1,0 +1,7 @@
+another lines
+that line is the same
+from second file
+that line is the same
+ssssd
+that line is the same
+end

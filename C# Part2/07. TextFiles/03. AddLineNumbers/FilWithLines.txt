@@ -1,0 +1,6 @@
+1 some lines
+2 from first
+3 file
+4 another lines
+5 from second file
+6 

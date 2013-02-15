@@ -1,0 +1,2 @@
+another lines
+from second file
