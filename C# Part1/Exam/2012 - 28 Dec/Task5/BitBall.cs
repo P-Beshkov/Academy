@@ -3,64 +3,35 @@
 class Task5
 {
     static char[,] field = new char[8, 8];
-    static char[,] fillTopTeam(int[] numbers)
-    {
-        char[,] matrix = new char[8, 8];
-        for (int x = 0; x <= 7; x++)
-        {
-            int y = 0;
-            do
-            {
-                int juniorBit = 1 & numbers[x];
-                if (juniorBit == 1)
-                {
-                    matrix[x, y] = 'T';
-                }
-                numbers[x] >>= 1;
-                y++;
-            }
-            while (numbers[x] != 0);
-        }
-        return matrix;
-    }
-    static char[,] fillBottomTeam(int[] numbers)
-    {
-        char[,] matrix = new char[8, 8];
-        for (int x = 0; x <= 7; x++)
-        {
-            int y = 0;
-            do
-            {
-                int juniorBit = 1 & numbers[x];
-                if (juniorBit == 1)
-                {
-                    matrix[x, y] = 'B';
-                }
-                numbers[x] >>= 1;
-                y++;
-            }
-            while (numbers[x] != 0);
-        }
-        return matrix;
-    }
-    static void fillField(char[,] teamTop, char[,] teamBot)
-    {
 
-        for (int row = 0; row < field.GetLength(0); row++)
+    static char[,] fillTeam(int[] numbers, char teamSymbol)
+    {
+        char[,] matrix = new char[8, 8];
+        for (int x = 0; x <= 7; x++)
         {
-            for (int column = 0; column < field.GetLength(1); column++)
+            int y = 0;
+            do
             {
-                if (teamTop[row, column] == 'T' && teamBot[row, column] != 'B')
+                int juniorBit = 1 & numbers[x];
+                if (juniorBit == 1)
                 {
-                    field[row, column] = 'T';
+                    if (field[x, y] == '\0')
+                    {
+                        field[x, y] = teamSymbol;
+                    }
+                    else
+                    {
+                        field[x, y] = '\0';
+                    }
                 }
-                if (teamTop[row, column] != 'T' && teamBot[row, column] == 'B')
-                {
-                    field[row, column] = 'B';
-                }
+                numbers[x] >>= 1;
+                y++;
             }
+            while (numbers[x] != 0);
         }
+        return matrix;
     }
+    
     static bool DownWards(int row, int column)
     {
         bool scored = true;
@@ -75,6 +46,7 @@ class Task5
         }
         return scored;
     }
+
     static bool UpWards(int row, int column)
     {
         bool scored = true;
@@ -89,10 +61,11 @@ class Task5
         }
         return scored;
     }
+
     static void attack()
     {
         int scoreTop = 0,
-            scoreBot = 0;
+        scoreBot = 0;
         for (int row = 0; row < field.GetLength(0); row++)
         {
             for (int column = 0; column < field.GetLength(1); column++)
@@ -109,23 +82,41 @@ class Task5
         }
         Console.WriteLine(scoreTop + ":" + scoreBot);
     }
+
+    static void GetValues(int[] numbers)
+    {
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = int.Parse(Console.ReadLine());
+        }
+    }
+
     static void Main()
     {
         int[] numbers = new int[8];
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            numbers[i] = int.Parse(Console.ReadLine());
-        }
-        char[,] topTeam = fillTopTeam(numbers);
-
-        for (int i = 0; i < numbers.Length; i++)
-        {
-            numbers[i] = int.Parse(Console.ReadLine());
-        }
-        char[,] bottomTeam = fillBottomTeam(numbers);
-
-        fillField(topTeam, bottomTeam);
+        GetValues(numbers);
+        char[,] topTeam = fillTeam(numbers, 'T');
+        GetValues(numbers);
+        char[,] bottomTeam = fillTeam(numbers, 'B');
         attack();
     }
 }
 
+//static void fillField(char[,] teamTop, char[,] teamBot)
+//{
+
+//    for (int row = 0; row < field.GetLength(0); row++)
+//    {
+//        for (int column = 0; column < field.GetLength(1); column++)
+//        {
+//            if (teamTop[row, column] == 'T' && teamBot[row, column] != 'B')
+//            {
+//                field[row, column] = 'T';
+//            }
+//            if (teamTop[row, column] != 'T' && teamBot[row, column] == 'B')
+//            {
+//                field[row, column] = 'B';
+//            }
+//        }
+//    }
+//}
