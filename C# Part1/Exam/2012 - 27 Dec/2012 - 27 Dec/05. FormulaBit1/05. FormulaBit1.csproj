@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52A02473-50AA-4F16-97F5-8C9CEB3C3F87}</ProjectGuid>
+    <ProjectGuid>{8D82E18C-2C4D-4DB1-A359-1756AF77D011}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_04.Carpets</RootNamespace>
-    <AssemblyName>_04.Carpets</AssemblyName>
+    <RootNamespace>_05.FormulaBit1</RootNamespace>
+    <AssemblyName>_05.FormulaBit1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Carpets.cs" />
+    <Compile Include="FormulaBit1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
