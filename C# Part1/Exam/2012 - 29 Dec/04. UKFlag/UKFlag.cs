@@ -4,6 +4,6 @@ class UKFlag
 {
     static void Main()
     {
-        int heighy
+        
     }
 }

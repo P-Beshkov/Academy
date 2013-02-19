@@ -1,14 +1,14 @@
 ﻿using System;
-
+using System.Collections.Generic;
 class Program
 {
-    static char[] cards = new char[5];
+    static List<char> cards = new List<char>();
     static bool CheckImpossible()
     {
         bool result = true;
         for (int i = 0; i < 4; i++)
         {
-            if (cards[i]!=cards[i+1])
+            if (cards[i] != cards[i + 1])
             {
                 result = false;
             }
@@ -21,12 +21,12 @@ class Program
         int differentCount = 1;
         for (int i = 0; i < 4; i++)
         {
-            if (cards[i]!=cards[i+1])
+            if (cards[i] != cards[i + 1])
             {
                 differentCount++;
             }
         }
-        if (differentCount>=3)
+        if (differentCount >= 3)
         {
             result = false;
         }
@@ -36,7 +36,7 @@ class Program
     static bool CheckFullHouse()
     {
         bool result = false;
-        if (cards[0]==cards[1]==cards[2] && cards[3]==cards[4])
+        if (cards[0] == cards[1] == cards[2] && cards[3] == cards[4])
         {
             result = true;
         }
@@ -49,22 +49,46 @@ class Program
 
     static bool CheckStraight()
     {
-        bool result = false;
-        for (int i = 0; i < 5; i++)
+        if (cards.Contains('>'))
         {
-            if (Char.IsDigit(cards[0]))
-            {
-                if (cards[i+1]!=cards[i]+1)
-                {
-
-                }
-            }
-            
+            cards.Insert(0, '1');
+            cards.RemoveAt(cards.Count - 1);
         }
-        
+        for (int i = 0; i < 3; i++)
+        {
+            if (cards[i] + 1 != cards[i + 1])
+            {
+                return false;
+            }
+        }
+        return true;
 
+    }
+    static bool CheckThreeOfKind()
+    {
+        bool result = false;
 
-        return result;
+        int count = 1;
+        for (int i = 0; i < 4; i++)
+        {
+            if (cards[i]==cards[i+1])
+            {
+                count++;
+            }
+            else
+            {
+                count = 1;
+            }
+            if (count==3)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    static bool CheckTwoPairs()
+    {
+
     }
     static void Main()
     {
