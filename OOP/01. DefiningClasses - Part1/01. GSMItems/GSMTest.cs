@@ -10,7 +10,7 @@ internal class GSMTest
     private List<MobilePhone> phones = new List<MobilePhone>();
     public GSMTest()
     {
-        MobilePhone tempPhone = new MobilePhone("Nokia", "", "Moni", 305.23M);
+        MobilePhone tempPhone = new MobilePhone("Nokia", "N95", "Moni", 305.23M);
         phones.Add(tempPhone);
         tempPhone = new MobilePhone("Samsung", "Note 2", "Nakov", 605.0M);
         phones.Add(tempPhone);

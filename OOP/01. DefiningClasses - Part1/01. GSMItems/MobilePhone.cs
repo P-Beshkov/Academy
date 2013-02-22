@@ -80,7 +80,7 @@ public class MobilePhone
         }
         set
         {
-            if (value!=null)
+            if (value!=null && value.Length!=0)
             {
                 this.manufacturer = value;
             }
