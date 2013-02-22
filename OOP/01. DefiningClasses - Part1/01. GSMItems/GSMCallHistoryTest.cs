@@ -1,5 +1,5 @@
-﻿/*12. Write a class GSMCallHistoryTest to test the call history functionality of the GSM class.
-- Create an instance of the GSM class.
+﻿/*12. Write a class GSMCallHistoryTest to test the call history functionality of the MobilePhone class.
+- Create an instance of the MobilePhone class.
 - Add few calls.
 - Display the information about the calls.
 - Assuming that the price per minute is 0.37 calculate and print the total price of the calls in the history.
@@ -12,12 +12,14 @@ class GSMCallHistoryTest
 {
     static void Main(string[] args)
     {
-        GSM samplePhone = new GSM("Sony", "Cedar", "Bobi", 180M);
+        GSMTest test = new GSMTest();
+        test.ShowAllPhones();
+        MobilePhone samplePhone = new MobilePhone("Sony", "Cedar", "Bobi", 180M);        
         samplePhone.AddCall();
         samplePhone.AddCall();
         samplePhone.AddCall();
         samplePhone.AddCall();
-        samplePhone.DisplayCallHistory();
+        Console.WriteLine(samplePhone.CallHistory);
         Console.WriteLine("{0}'s bill = {1}",samplePhone.Owner,samplePhone.CalculateBill(0.37M));
         samplePhone.DeleteCall();
         Console.WriteLine("Recalculated bill = {0}",samplePhone.CalculateBill(0.37M));

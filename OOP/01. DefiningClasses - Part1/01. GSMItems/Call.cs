@@ -1,4 +1,4 @@
-﻿/*08. Create a class Call to hold a call performed through a GSM. It should contain date, time, 
+﻿/*08. Create a class Call to hold a call performed through a MobilePhone. It should contain date, time, 
 * dialed phone number and duration (in seconds). */
 using System;
 using System.Collections.Generic;
