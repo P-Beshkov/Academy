@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03. Poker", "03. Poker\03. 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04. UKFlag", "04. UKFlag\04. UKFlag.csproj", "{DD919AEB-891B-4DF1-BE86-B864183CCCFE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05. AngryBits", "05. AngryBits\05. AngryBits.csproj", "{EE2F0E67-831D-452F-A90A-930441C35801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{DD919AEB-891B-4DF1-BE86-B864183CCCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD919AEB-891B-4DF1-BE86-B864183CCCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD919AEB-891B-4DF1-BE86-B864183CCCFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE2F0E67-831D-452F-A90A-930441C35801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE2F0E67-831D-452F-A90A-930441C35801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE2F0E67-831D-452F-A90A-930441C35801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE2F0E67-831D-452F-A90A-930441C35801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

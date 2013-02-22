@@ -17,30 +17,35 @@ class Program
     }
     static bool CheckFourKind()
     {
-        bool result = true;
-        int differentCount = 1;
+        bool result = false;
+
+        int count = 1;
         for (int i = 0; i < 4; i++)
         {
-            if (cards[i] != cards[i + 1])
+            if (cards[i] == cards[i + 1])
             {
-                differentCount++;
+                count++;
+            }
+            else
+            {
+                count = 1;
+            }
+            if (count == 4)
+            {
+                return true;
             }
         }
-        if (differentCount >= 3)
-        {
-            result = false;
-        }
-        return result;
+        return false;
     }
 
     static bool CheckFullHouse()
     {
         bool result = false;
-        if (cards[0] == cards[1] == cards[2] && cards[3] == cards[4])
+        if (cards[0] == cards[1] && cards[1] == cards[2] && cards[3] == cards[4])
         {
             result = true;
         }
-        if (cards[2] == cards[3] == cards[4] && cards[0] == cards[1])
+        if (cards[2] == cards[3] && cards[3] == cards[4] && cards[0] == cards[1])
         {
             result = true;
         }
@@ -88,10 +93,107 @@ class Program
     }
     static bool CheckTwoPairs()
     {
+        bool result = false;
+        bool foundOne = false;
+        int count = 1;
+        for (int i = 0; i < 4; i++)
+        {
+            if (cards[i] == cards[i + 1])
+            {
+                count++;
+            }
+            else
+            {
+                count = 1;
+            }
+            if (count==2 && foundOne)
+            {
+                return true;
+            }
+            if (count == 2)
+            {
+                foundOne = true;
+            }
+        }
+        return false;
+    }
+    static bool CheckOnePair()
+    {
+        bool result = false;
 
+        int count = 1;
+        for (int i = 0; i < 4; i++)
+        {
+            if (cards[i] == cards[i + 1])
+            {
+                count++;
+            }
+            else
+            {
+                count = 1;
+            }
+            if (count == 2)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     static void Main()
     {
+
+        for (int i = 0; i < 5; i++)
+        {
+            string card = Console.ReadLine();
+            switch (card)
+            {
+                case "10": cards.Add(':');
+                    break;
+                case "J": cards.Add(';');
+                    break;
+                case "Q": cards.Add('<');
+                    break;
+                case "K": cards.Add('=');
+                    break;
+                case "A": cards.Add('>');
+                    break;
+                default: cards.Add(card[0]);
+                    break;
+            }
+        }
+        cards.Sort();
+        if (CheckImpossible())
+        {
+            Console.WriteLine("Impossible");
+        }
+        else if (CheckFourKind())
+        {
+            Console.WriteLine("Four of a Kind");
+        }
+        else if(CheckFullHouse())
+        {
+            Console.WriteLine("Full House");
+        }
+        else if (CheckStraight())
+        {
+            Console.WriteLine("Straight");
+        }
+        else if (CheckThreeOfKind())
+        {
+            Console.WriteLine("Three of a Kind");
+        }
+        else if (CheckTwoPairs())
+        {
+            Console.WriteLine("Two Pairs");
+        }
+        else if(CheckOnePair())
+        {
+            Console.WriteLine("One Pair");
+        }
+        else
+        {
+            Console.WriteLine("Nothing");
+        }
 
     }
 }
