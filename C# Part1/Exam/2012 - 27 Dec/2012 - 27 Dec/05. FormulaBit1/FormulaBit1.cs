@@ -3,7 +3,9 @@
 class FormulaBit1
 {
     static int[,] track = new int[8, 8];
-
+    static bool downBlock = false,
+            upBlock = false,
+            leftBlock = false;
     struct Position
     {
         public int row;
@@ -99,53 +101,70 @@ class FormulaBit1
         position.column = 0;
         int turns = -1;
         int lenght = 1;
+        
         do
         {
-            int distance;
+            int distance,
+                cycleState = 0;
             distance = MoveDown();
             if (distance == 0)
             {
-                break;
+                downBlock = true;
             }
             else
             {
+                cycleState = 1;
                 lenght += distance;                
                 turns++;
+                downBlock = upBlock = leftBlock = false;
             }
 
             distance = MoveLeft();
             if (distance == 0)
             {
-                break;
+                leftBlock = true;
             }
             else
             {
+                cycleState = 2;
                 lenght += distance;                
                 turns++;
+                downBlock = upBlock = leftBlock = false;
             }
-            distance = MoveUp();
+            
+            if (cycleState==2 || cycleState==0)
+            {
+                distance = MoveUp();
+                if (distance == 0)
+                {
+                    upBlock = true;
+                }
+                else
+                {
+                    lenght += distance;
+                    turns++;
+                    downBlock = upBlock = leftBlock = false;
+                }
+            }
+
+            distance = MoveLeft();  
             if (distance == 0)
             {
-                break;
+                leftBlock = true;
             }
             else
             {
                 lenght += distance;                
                 turns++;
+                downBlock = upBlock = leftBlock = false;
             }
-            distance = MoveLeft();
-            if (distance == 0)
+            if (upBlock && leftBlock && downBlock)
             {
                 break;
-            }
-            else
-            {
-                lenght += distance;                
-                turns++;
             }
         }
         while (true);
-       if (position.row == 7 || position.column == 7)
+        if (position.row == 7 || position.column == 7)
         {
             Console.WriteLine("{0} {1}", lenght, turns);
         }
@@ -153,5 +172,10 @@ class FormulaBit1
         {
             Console.WriteLine("No {0}", lenght);
         }
+    }
+
+    private static void ClearBlocks()
+    {
+        downBlock = upBlock = leftBlock = false;
     }
 }
