@@ -9,6 +9,6 @@ class TimerTest
     static void Main()
     {
         Timer timer = new Timer();
-        timer.Execute(10);
+        timer.Execute(1000);
     }
 }

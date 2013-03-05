@@ -1,11 +1,11 @@
 ﻿/*01. Write a method that from a given array of students finds all 
- * students whose first name is before its last name alphabetically.
- * Use LINQ query operators. 
+* students whose first name is before its last name alphabetically.
+* Use LINQ query operators. 
 04. Write a LINQ query that finds the first name and last name of
- * all students with age between 18 and 24. 
+* all students with age between 18 and 24. 
 05. Using the extension methods OrderBy() and ThenBy() with lambda 
- * expressions sort the students by first name and last name in
- * descending order. Rewrite the same with LINQ.
+* expressions sort the students by first name and last name in
+* descending order. Rewrite the same with LINQ.
 */
 
 using System;
@@ -17,10 +17,12 @@ class ArrayOfStudentsQuery
     class Student
     {
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
+
         public int Age { get; private set; }
         
-        public Student(string firstName, string lastName,int age)
+        public Student(string firstName, string lastName, int age)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
@@ -36,23 +38,23 @@ class ArrayOfStudentsQuery
         students.Add(new Student("Petyr", "Karagiozov",18));
 
         var selected =
-            from item in students
-            where item.FirstName.CompareTo(item.LastName) < 0
-            select item;
+                      from item in students
+                      where item.FirstName.CompareTo(item.LastName) < 0
+                      select item;
         foreach (var item in selected)
         {
-            Console.WriteLine(item.FirstName+" "+item.LastName);
+            Console.WriteLine(item.FirstName + " " + item.LastName);
         }
         Console.WriteLine();
 
         Console.WriteLine("Within age [18-24]");
         selected =
-            from student in students
-            where student.Age >= 18 && student.Age <= 24
-            select student;
+                  from student in students
+                  where student.Age >= 18 && student.Age <= 24
+                  select student;
         foreach (var item in selected)
         {
-            Console.WriteLine(item.FirstName + " " + item.LastName +" - "+item.Age);
+            Console.WriteLine(item.FirstName + " " + item.LastName + " - " + item.Age);
         }
         Console.WriteLine();
 
@@ -65,9 +67,9 @@ class ArrayOfStudentsQuery
         Console.WriteLine();
 
         selected =
-            from student in students
-            orderby student.FirstName+student.LastName
-            select student;
+                  from student in students
+                  orderby student.FirstName + student.LastName
+                  select student;
         Console.WriteLine("Sorted students with LINQ");
         selected = students.OrderBy((st) => st.FirstName).ThenBy((st) => st.LastName);
         foreach (var item in selected)
