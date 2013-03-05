@@ -6,24 +6,26 @@
 - Remove the longest call from the history and calculate the total price again.
 - Finally clear the call history and print it. */
 using System;
-using System.Collections.Generic;
 
 class GSMCallHistoryTest
 {
     static void Main(string[] args)
     {
-        GSMTest test = new GSMTest();
-        test.ShowAllPhones();
+        //GSMTest test = new GSMTest();
+        //test.ShowAllPhones();
         MobilePhone samplePhone = new MobilePhone("Sony", "Cedar", "Bobi", 180M);        
         samplePhone.AddCall();
         samplePhone.AddCall();
         samplePhone.AddCall();
         samplePhone.AddCall();
-        Console.WriteLine(samplePhone.CallHistory);
+        Console.Write(samplePhone.CallHistory);
         Console.WriteLine("{0}'s bill = {1}",samplePhone.Owner,samplePhone.CalculateBill(0.37M));
         samplePhone.DeleteCall();
         Console.WriteLine("Recalculated bill = {0}",samplePhone.CalculateBill(0.37M));
-
+        Console.WriteLine(samplePhone.CallHistory);
+        samplePhone.ClearCallHistory();
+        Console.WriteLine("Calls after clear function");
+        Console.WriteLine(samplePhone.CallHistory);
     }
 }
 

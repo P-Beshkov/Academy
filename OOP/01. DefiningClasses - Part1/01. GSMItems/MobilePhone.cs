@@ -36,7 +36,7 @@ public class MobilePhone
             int index = 1;
             foreach (Call item in callHistory)
             {
-                result +=string.Format("{0}. {1}", index, item);
+                result +=string.Format("{0}. {1}\n", index, item);
                 index++;
             }
             return result;

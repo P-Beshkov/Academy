@@ -61,7 +61,7 @@ class Call
         }
         set
         {
-            MatchCollection matches = Regex.Matches(@"08[7,8,9]\d{7}", value);
+            MatchCollection matches = Regex.Matches(value, @"08[7,8,9][0-9]{7}");
             if (matches.Count != 0)
             {
                 this.phoneDialed = matches[0].ToString();
