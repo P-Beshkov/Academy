@@ -6,6 +6,7 @@ using System.Text;
 public class Student : Human
 {
     private int classNumber;
+
     public int ClassNumber
     {
         get
@@ -14,20 +15,30 @@ public class Student : Human
         }
         protected set
         {
-            if (value>0)
+            if (value > 0)
             {
                 this.classNumber = value;
             }
         }
     }
-    public Student(string name) : base(name)
+
+    public Student(string name) : this(name,1,"")
     {
-        
     }
-    public Student(string name, int classNumber) : base(name)
+
+    public Student(string name, string comment) : this(name,1,comment)
+    {
+    }
+
+    public Student(string name, int classNumber) : this(name,classNumber,"")
+    {
+    }
+
+    public Student(string name, int classNumber, string comment) : base(name,comment)
     {
         this.ClassNumber = classNumber;
     }
+
     public static Student CreateStudent(int number)
     {
         Console.WriteLine("Student name: ");

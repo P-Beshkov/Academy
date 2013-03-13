@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>CheckThirdDigit</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+		var value1 = 45732;
+		var value2 = 98345;
+		var isDigit7= true;		
+
+		var temp = parseInt(value1 / 100)
+		if(temp % 10 == 7)
+		{
+			isDigit7=true;
+		}
+		else
+		{
+			isDigit7=false;
+		}
+		jsConsole.writeLine(value1+" third digit is seven: "+ isDigit7);
+		
+		temp = parseInt(value2 / 100)
+		if(temp % 10 == 7)
+		{
+			isDigit7=true;
+		}
+		else
+		{
+			isDigit7=false;
+		}
+		jsConsole.writeLine(value2+" third digit is seven: "+ isDigit7);
+
+					
+	</script>
+</body>
+</html>

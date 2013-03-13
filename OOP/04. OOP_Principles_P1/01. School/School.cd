@@ -1,31 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Group">
-    <Position X="3.75" Y="1" Width="1.5" />
+    <Position X="3" Y="1" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAAAAAQAAAAAAAAAQAAAACAAAAAgAAAAACAAY=</HashCode>
       <FileName>Group.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Student">
-    <Position X="8.5" Y="3" Width="1.5" />
+    <Position X="8.5" Y="3.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAEAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Student.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Teacher">
-    <Position X="5.5" Y="3" Width="1.75" />
-    <InheritanceLine Type="Human" FixedFromPoint="true">
-      <Path>
-        <Point X="7.75" Y="2.507" />
-        <Point X="7.75" Y="2.75" />
-        <Point X="6.375" Y="2.75" />
-        <Point X="6.375" Y="3" />
-      </Path>
-    </InheritanceLine>
+    <Position X="5.5" Y="3.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAAAACAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Teacher.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -37,17 +29,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Human">
-    <Position X="7" Y="0.5" Width="1.5" />
+    <Position X="7" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Human.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="Discipline">
-    <Position X="0.5" Y="2.25" Width="1.5" />
+    <Position X="0.5" Y="2.25" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAQAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
+      <HashCode>AAQAQAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DisciplineSet.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Font Name="Segoe UI" Size="9" />

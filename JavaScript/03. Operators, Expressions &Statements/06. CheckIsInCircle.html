@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>CheckInCircle</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+		var X = 3;
+		var Y = 2.33;
+		var radius = 5;
+		var isInCircle;
+		if ((X * X + Y * Y) < radius * radius)
+		{
+            isInCircle=true;
+		}
+        else
+        {
+			isInCircle=false;
+		}
+		jsConsole.writeLine("Point (" + X + "," + Y +") is in circle K(0,5): "+isInCircle);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>PrimeNumber</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+		var number = 48;
+		var isPrime = true;
+		var border = Math.sqrt(number);	
+              
+        for (var i = 2; i < border; i++)
+        {
+            if (number % i == 0)
+            {
+                isPrime = false;
+            }
+        }
+        
+        jsConsole.writeLine("Number " + number + " is prime number: "+isPrime);
+        
+	</script>
+</body>
+</html>

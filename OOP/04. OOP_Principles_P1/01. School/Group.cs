@@ -56,6 +56,7 @@ public class Group
             group.students.Add(newPupil);
         }
         TeacherSet.ShowAllTeachers();
+        
         Console.WriteLine("Teachers for this group = ");
         int teachersCount = int.Parse(Console.ReadLine());
         Console.WriteLine("Enter teacher number to add [empty line for end]:");

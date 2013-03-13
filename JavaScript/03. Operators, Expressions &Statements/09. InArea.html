@@ -1,0 +1,47 @@
+<html>
+<head>
+	<title>InArea</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+			var X = 1;
+			var Y = 2;
+			var Xc = 1;
+			var Yc = 1;
+			var radius = 3;
+			var XL = -1;
+			var YL = 1;
+			var width = 6;
+			var height = 3;
+			var XR = XL + width;        
+			var YR = YL - height;  
+            
+            var isInCircle = false;
+            var isInRec = false;
+            if (((X - Xc) * (X - Xc) + (Y - Yc) * (Y - Yc)) < radius * radius)
+			{
+                isInCircle = true;
+			}
+            else
+			{
+                isInCircle = false;
+			}
+
+            if ((X > XL && X < XR) && (Y < YL && Y > YR))
+			{
+                isInRec = true;
+			}
+            else
+			{
+                isInRec = false;
+			}
+				
+            jsConsole.writeLine("Point (" + X + "," + Y +") is within circle: "+isInCircle);
+			jsConsole.writeLine("Point (" + X + "," + Y +") is within rectangle: "+isInRec);	
+
+	</script>
+</body>
+</html>

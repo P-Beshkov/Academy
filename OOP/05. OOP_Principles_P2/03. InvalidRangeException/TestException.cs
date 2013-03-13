@@ -23,21 +23,10 @@ class Program
         Console.WriteLine("Enter date in range[1.1.1980-31.12.2013]:");
         DateTime date = new DateTime();
         date = DateTime.Parse(Console.ReadLine());
+        if (date>new DateTime(2013,12,31) || date<new DateTime(1980,1,1))
+        {
+            throw new InvalidRangeException<DateTime>("Value must be in range[1.1.1980 - 31.12.2013]", new DateTime(1980, 1, 1), new DateTime(2013, 12, 31));
+        }
     }
 }
 
-class InvalidRangeException<T> : ApplicationException
-{
-    private T start;
-    private T end;
-
-    public InvalidRangeException(string message, T start, T end) : base(message,null)
-    {
-    }
-
-    public InvalidRangeException(string message, T start, T end, Exception causeException) : base(message, causeException)
-    {
-        this.start = start;
-        this.end = end;
-    }
-}

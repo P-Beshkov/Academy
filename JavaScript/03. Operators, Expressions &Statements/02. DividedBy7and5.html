@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>DividedBy7and5</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+		var a = 35;
+		var b = 42;
+
+		var divides=false;
+		if (a%5==0 && a%7==0) {divides=true};
+		jsConsole.writeLine(a+" divides 5 and 7: "+divides);
+		divides=false;
+		if (b%5==0 && b%7==0) {divides=true};
+		jsConsole.writeLine(b+" divides 5 and 7: "+divides);
+		  
+	</script>
+</body>
+</html>

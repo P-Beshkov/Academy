@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D99B15D-9ADD-4120-8439-7D6D2EA7F3F4}</ProjectGuid>
+    <ProjectGuid>{97BE93E6-D422-461A-B92E-0025A3FE9556}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_02.Bank</RootNamespace>
-    <AssemblyName>_02.Bank</AssemblyName>
+    <RootNamespace>_06.BinaryTree</RootNamespace>
+    <AssemblyName>_06.BinaryTree</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,15 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="Deposit.cs" />
-    <Compile Include="Loan.cs" />
-    <Compile Include="Mortgage.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="BinaryTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Bank.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
