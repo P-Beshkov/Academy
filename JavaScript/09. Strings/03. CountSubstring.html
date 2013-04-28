@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strings - Methods</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="text">Place your text here</textarea>
+    <label for="sub">Enter substring</label>
+    <input type="text" name="sub" id="sub" />
+    <a href="#" onclick="main()">Count</a>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js">	
+    </script>
+    <script>
+        //Write a JavaScript function that finds how many times a substring is contained in a given text (perform case insensitive search).
+        //Example: The target substring is "in". The text is as follows:
+        function main() {
+            var text = document.getElementById("text").value;
+            var substring = document.getElementById("sub").value;
+            var count = checkFinds(text, substring);
+            jsConsole.writeLine(count + " times");
+
+            function checkFinds(text, substring) {
+                text = new String(text);
+                substring = new String(substring);
+                text = text.toLowerCase();
+                substring = substring.toLowerCase();
+                var index = text.indexOf(substring);
+                var times = 0;
+                while (index != -1) {
+                    times++;
+                    index = text.indexOf(substring, index + substring.length - 1);
+                }
+
+                return times;
+
+            }
+
+            function toLower(text) {
+                text = new String(text);
+                var result = new String()
+                for (var i = 0; i < text.length; i++) {
+                    result += text[i].tolower();
+                }
+                return result;
+            }
+        }
+
+    </script>
+</body>
+</html>

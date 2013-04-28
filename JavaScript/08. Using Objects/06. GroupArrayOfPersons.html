@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JS Console - Example</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js">	
+    </script>
+    <script>
+        //Write a function that groups an array of persons by age, first or last name. 
+        //The function must return an associative array, with keys - the groups, 
+        //and values -arrays with persons in this groupsUse function overloading (i.e. just one function)
+        function Person(firstname, lastname, age) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.age = age;
+        }
+        var persons = [
+            new Person("Gosho", "Petrov", 28),
+            new Person("Bai", "Ivan", 18),
+            new Person("Bai", "Mangal", 20)
+        ];
+        var grouped = groupByProperty(persons);
+        jsConsole.write("Ages: ");
+        for (var i in grouped["age"]) {
+            jsConsole.write(grouped["age"][i]+ ", ");
+        }
+        jsConsole.writeLine();
+        jsConsole.write("First names: ");
+        for (var i in grouped["firstName"]) {
+            jsConsole.write(grouped["firstName"][i] + ", ");
+        }
+
+        jsConsole.writeLine();
+        jsConsole.write("Last Names: ");
+        for (var i in grouped["lastName"]) {
+            jsConsole.write(grouped["lastName"][i] + ", ");
+        }
+        function groupByProperty(array) {
+            var groupedArray=["firstName","lastName","age"];
+            groupedArray["firstName"] = [];
+            groupedArray["lastName"] = [];
+            groupedArray["age"] = [];
+            for (var i = 0; i < array.length; i++) {
+                groupedArray["firstName"].push(array[i].firstname);
+                groupedArray["lastName"].push(array[i].lastname);
+                groupedArray["age"].push(parseInt(array[i].age));
+            }
+            return groupedArray;
+        }
+        function group(arr, prpt) {
+            var groupedArr = [];
+            var finalArray = [];
+            if (prpt == "age") {
+
+                var reppeatlessElements = []; //array with reppeatless elements
+
+                for (var i = 0; i < arr.length; i++) {
+
+                    var reppeat = false; //checks if the element reppeats
+
+                    for (var j = 0; j < i; j++) {
+                        if (arr[i].age == arr[j].age) {
+                            reppeat = true;
+                            break; //if element reppeats break the iteration
+                        }
+                    }
+
+                    if (reppeat == false) { //if element does not reppeat push it to the reppeatless array
+                        reppeatlessElements.push(arr[i]);
+                    }
+                }
+
+                for (var i = 0; i < reppeatlessElements.length; i++) {
+                    var tempArr = [];
+
+                    for (var j = 0; j < arr.length; j++) {
+                        if (reppeatlessElements[i].age == arr[j].age) {
+                            tempArr.push(arr[j]);
+                            //console.log(reppeatlessElements[i]);
+                            //console.log(arr[i]);
+                        }
+                    }
+                    groupedArr.push(tempArr);
+                }
+
+                for (var i = 0; i < groupedArr.length; i++) {
+                    finalArray.push({ Key: groupedArr[i][0].age, Value: groupedArr[i] });
+                }
+
+            }
+            else // if prpt is "firstname"
+            {
+                var reppeatlessElements = []; //array with reppeatless elements
+
+                for (var i = 0; i < arr.length; i++) {
+
+                    var reppeat = false; //checks if the element reppeats
+
+                    for (var j = 0; j < i; j++) {
+                        if (arr[i].firstname == arr[j].firstname) {
+                            reppeat = true;
+                            break; //if element reppeats break the iteration
+                        }
+                    }
+
+                    if (reppeat == false) { //if element does not reppeat push it to the reppeatless array
+                        reppeatlessElements.push(arr[i]);
+                    }
+                }
+
+                for (var i = 0; i < reppeatlessElements.length; i++) {
+                    var tempArr = [];
+
+                    for (var j = 0; j < arr.length; j++) {
+                        if (reppeatlessElements[i].firstname == arr[j].firstname) {
+                            tempArr.push(arr[j]);
+                        }
+                    }
+                    groupedArr.push(tempArr);
+                }
+
+                for (var i = 0; i < groupedArr.length; i++) {
+                    finalArray.push({ Key: groupedArr[i][0].firstname, Value: groupedArr[i] });
+                }
+            }
+
+            return finalArray;
+        }
+    </script>
+</body>
+</html>

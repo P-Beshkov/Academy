@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function Solve(params) {
+            var arrSize = parseInt(params[0]);
+            var array = new Array();
+            for (var i = 0; i < arrSize; i++) {
+                array.push(parseInt(params[i + 1]));
+            }
+            if (arrSize == 1) {
+                return 1;
+            }
+
+            var currentElement = array[1];
+            var prevElement = array[0];
+            var count = 0;
+
+            for (var currentPosition = 1; currentPosition < arrSize; currentPosition++) {
+                currentElement = array[currentPosition];
+                if (currentElement < prevElement) {
+                    count++;
+                }
+                prevElement = currentElement;
+            }
+            count++;
+            return count;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        main();
+        function main() {
+            var args = [
+                //'(def func 10)',
+                //'(def newFunc (+ func 2))',
+                //'(def sumFunc (+ func func newFunc 0 0 0))',
+                //'(* sumFunc 2)',
+                //'(def myFunc 5)',
+                //'(def MyFunc (* 2 myFunc))',
+                //'(def myNewFunc (+ 3 10))',
+                '(    +    -6 -10 1020 )'
+            ];
+
+            console.log(Solve(args));
+        }
+        function Solve(args) {
+            var instruction;
+            var lineNumber = 1;
+            var functions = new Array();
+            var tempVal;
+            do {
+                var result;
+                instruction = args.shift();
+                instruction = instruction.substr(1, instruction.length - 2);
+                var params = instruction.split(' ');
+                params = clearEmptyLines(params);
+                var operation = params.shift();
+                if (args.length == 0) {
+                    switch (operation) {
+                        case '+':
+                            value = 0;
+                            do {
+                                tempVal = getValue(params.shift());
+                                value += tempVal;
+                            }
+                            while (params.length > 0);
+                            return value;
+                            break;
+                        case '-':
+                            value = getValue(params.shift());
+                            while (params.length > 0) {
+                                tempVal = getValue(params.shift());
+                                value -= tempVal;
+                            }
+                            return value;
+                            break;
+                        case '*':
+                            value = getValue(params.shift());
+                            while (params.length > 0) {
+                                tempVal = getValue(params.shift());
+                                value *= tempVal;
+                            }
+                            return value;
+                            break;
+                        case '/':
+                            value = getValue(params.shift());
+                            while (params.length > 0) {
+                                tempVal = getValue(params.shift());
+                                if (tempVal == 0) {
+                                    result = 'Division by zero! At Line:' + lineNumber;
+                                    return result;
+                                }
+                                value /= tempVal;
+                                value = parseInt(value);
+                            }
+                            return value;
+                            break;
+                        default:
+                            throw new Error('Not recognized operation last');
+                            break;
+                    }
+                }
+                switch (operation) {
+                    case '/':
+                        value = getValue(params.shift());
+                        while (params.length > 0) {
+                            tempVal = getValue(params.shift());
+                            if (tempVal == 0) {
+                                result = 'Division by zero! At Line:' + lineNumber;
+                                return result;
+                            }
+                            value /= tempVal;
+                            value = parseInt(value);
+                        }
+                        break;
+                    case 'def':
+                        //name (,/,func,5,2,1,0)                        
+                        var name = params.shift();
+                        var value;
+                        if (params.length == 1) {
+                            value = parseInt(params[0]);
+                            functions.push([name, value]);
+                            break;
+                        }
+                        var oper = params.shift();
+
+                        switch (oper) {
+                            case '+':
+                                value = 0;
+                                do {
+                                    tempVal = getValue(params.shift());
+                                    value += tempVal;
+                                }
+                                while (params.length > 0);
+                                break;
+                            case '-':
+                                value = getValue(params.shift());
+                                while (params.length > 0) {
+                                    tempVal = getValue(params.shift());
+                                    value -= tempVal;
+                                }
+                                break;
+                            case '*':
+                                value = getValue(params.shift());
+                                while (params.length > 0) {
+                                    tempVal = getValue(params.shift());
+                                    value *= tempVal;
+                                }
+                                break;
+                            case '/':
+                                value = getValue(params.shift());
+                                while (params.length > 0) {
+                                    tempVal = getValue(params.shift());
+                                    if (tempVal == 0) {
+                                        return result = 'Division by zero! At Line:' + lineNumber;
+                                    }
+                                    value /= tempVal;
+                                    value = parseInt(value);
+                                }
+                                break;
+                            default:
+                                throw new Error('Not recognized operation inner');
+                                break;
+                        }
+                        functions.push([name, value]);
+                        break;
+                }
+                lineNumber++;
+            }
+            while (args.length > 0);
+
+
+            function getValue(rawValue) {
+                var number;
+                number = parseInt(rawValue);
+                if (!isNaN(number)) {
+                    return number;
+                }
+                for (var i = 0; i < functions.length; i++) {
+                    if (functions[i][0] == rawValue) {
+                        return functions[i][1];
+                    }
+                }
+            }
+            function clearEmptyLines(params) {
+                var clearedParams = new Array();
+                for (var i = 0; i < params.length; i++) {
+                    if (params[i].length != 0) {
+                        clearedParams.push(params[i]);
+                    }
+                    if (params[i].indexOf(')') != -1) {
+                        clearedParams.pop();
+                        if (params[i].length != 1) {
+                            clearedParams.push(params[i].substr(0, params[i].length - 1));
+                        }
+                    }
+                    if (params[i].indexOf('(') != -1) {
+                        clearedParams.pop();
+                        if (params[i].length != 1) {
+                            clearedParams.push(params[i].substr(1, params[i].length - 1));
+                        }
+                    }
+                }
+                return clearedParams;
+            }
+        }
+
+        debugger;
+    </script>
+
+</body>
+</html>

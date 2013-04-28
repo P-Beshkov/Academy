@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        function Solve(args) {
+            var values = args[0].split(' ');
+            var rows = parseInt(values[0]);
+            var columns = parseInt(values[1]);
+            var jumpsCount = parseInt(values[2]);
+
+            values = args[1].split(' ');
+            var startR = parseInt(values[0]);
+            var startC = parseInt(values[1]);
+
+            var jumps = new Array();
+            var field = new Array();
+            var number = 1;
+            for (var row = 0; row < rows; row++) {
+                var tempRow = new Array();
+                for (var cols = 0; cols < columns; cols++) {
+                    tempRow.push(number);
+                    number++;
+                }
+                field.push(tempRow);
+            }
+            for (var i = 0; i < jumpsCount; i++) {
+                values = args[i + 2].split(' ');
+                var tempJump = new Array();
+                tempJump.push(parseInt(values[0]));
+                tempJump.push(parseInt(values[1]));
+                jumps.push(tempJump);
+            }
+            var score = 0;
+            var curR = startR;
+            var curC = startC;
+            var jumpIndex = 0;
+            var escapeString = 'escaped ';
+            var caughtString = 'caught ';
+            var numberOfJumps = 0;
+            do {
+                score += field[curR][curC];
+                field[curR][curC] = 0;
+                curR += jumps[jumpIndex][0];
+                curC += jumps[jumpIndex][1];
+                jumpIndex++;
+                numberOfJumps++;
+                if (jumpIndex == jumpsCount) {
+                    jumpIndex = 0;
+                }
+                if (curR >= rows || curC >= columns || curR < 0 || curC < 0) {
+
+                    return escapeString + score;
+                }
+                if (field[curR][curC] == 0) {
+
+                    return caughtString + numberOfJumps;
+                }
+
+            } while (true);
+        }
+    </script>
+</body>
+</html>

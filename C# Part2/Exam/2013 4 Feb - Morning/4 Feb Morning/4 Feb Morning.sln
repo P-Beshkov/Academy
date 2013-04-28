@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4 Feb Morning", "4 Feb Morning\4 Feb Morning.csproj", "{E008EC45-03CE-433F-83AB-73B4D32D067B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertForJS", "ConvertForJS\ConvertForJS.csproj", "{38393926-2B98-45B7-8A46-6D858339FD48}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E008EC45-03CE-433F-83AB-73B4D32D067B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E008EC45-03CE-433F-83AB-73B4D32D067B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E008EC45-03CE-433F-83AB-73B4D32D067B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E008EC45-03CE-433F-83AB-73B4D32D067B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38393926-2B98-45B7-8A46-6D858339FD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38393926-2B98-45B7-8A46-6D858339FD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38393926-2B98-45B7-8A46-6D858339FD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38393926-2B98-45B7-8A46-6D858339FD48}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

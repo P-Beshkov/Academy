@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strings</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+    <script src="scripts/string-extensions.js"></script>
+</head>
+<body>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        //Write a program that extracts from a given text all palindromes, e.g. "ABBA", "lamal", "exe".
+        var text = "ABBA, lamal, exe, notAPalindrom, examaxe";
+        var words = text.split(', ');
+        for (var index in words) {
+            var word = words[index];
+            var start = 0;
+            var end = words[index].length - 1;
+            var isPalindrom = true;
+            for (var index = 0; index < word.length / 2; index++) {
+                if (word[start] != word[end]) {
+                    isPalindrom = false;
+                    break;
+                }
+            }
+            if (isPalindrom) {
+                jsConsole.writeLine(word);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strings - Methods</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console">    </div>
+    <script src="scripts/js-console.js">	    </script>
+    <script>
+    //Write a JavaScript function reverses string and returns itExample: "sample" -> "elpmas".
+        var string = 'sample';
+        var reversed = new Array();
+        for (var i = 0; i < string.length; i++) {
+            reversed[i] = '';
+        }
+            reversed = reverseString(string);
+        
+        jsConsole.writeLine(reversed);
+        jsConsole.writeLine(string);
+
+        function reverseString(justString)
+        {
+            var result = new Array(justString.length);
+            var i;
+            for (i = 0; i < justString.lenght; i++) {
+                result[result.length - (i + 1)] = justString[i];
+            }
+            return result;        
+        }
+    </script>
+</body>
+</html>

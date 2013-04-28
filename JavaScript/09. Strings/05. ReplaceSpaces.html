@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strings - concatenation</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="text">Enter your text</textarea>
+    <a href="#" class="js-console-btn" onclick="main()">Replace</a>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"> </script>
+    <script>
+        //Write a function that replaces non breaking white-spaces in a text with &nbsp;
+        function main() {
+            var inputText = new String(document.getElementById("text").value);
+            var replaced = replace(inputText, '&nbsp');
+
+            jsConsole.writeLine(replaced);
+            
+            function replace(text,item) {
+                text = new String(text);
+                var result = '';
+                for (var i = 0; i < text.length; i++) {
+                    if (text[i]==' ') {
+                        result += item;
+                    }
+                    else {
+                        result += text[i];
+                    }
+                }
+                return result;
+            }
+        }
+        debugger;
+
+    </script>
+</body>
+</html>

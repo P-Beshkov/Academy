@@ -1,0 +1,38 @@
+﻿﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>JS Console - Example
+    </title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js">
+    	
+    </script>
+    <script>
+        //Write a function that makes a deep copy of an object
+        //The function should work for both primitive and reference types
+        function clone(obj) {
+            if (obj == null) {
+                return obj;
+            }
+            if (obj instanceof Object) {
+                var copy = {};
+                for (var attr in obj) {
+                    if (obj.hasOwnProperty(attr)) {
+                        copy[attr] = obj[attr];
+                    }
+                }
+                return copy;
+            }            
+        }
+	
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Functions - Triangle</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>	
+	<a href="#" class="js-console-btn" onclick="countDivs()">Count Divs</a>
+	<div id="js-console"></div>
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    //Write a function to count the number of divs on the web page
+	    function countDivs() {
+	        var nodeListOfDivs = document.getElementsByTagName("div");
+	        var divsCount = nodeListOfDivs.length;
+	        jsConsole.writeLine("Number of divs in this page = " + divsCount);
+	    }
+	</script>
+</body>
+</html>

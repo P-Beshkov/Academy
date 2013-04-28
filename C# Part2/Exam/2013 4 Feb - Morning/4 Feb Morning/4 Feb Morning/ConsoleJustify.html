@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <script>
+        debugger;
+
+        main();
+
+        function Solve(args) {
+            var N = parseInt(args[0].split(" ")[0]);
+            var M = parseInt(args[0].split(" ")[1]);
+            var J = parseInt(args[0].split(" ")[2]);
+
+            var jumps = [];
+            for (var i = 0; i < args.length - 2; i++) {
+                jumps[i] = args[i + 2].split(" ").filter(function (x) { return x; }).map(function (x) { return parseInt(x); });
+            }
+
+            var initializer = 1;
+            var field = [];
+            for (var i = 0; i < N; i++) {
+                var row = [];
+                for (var j = 0; j < M; j++) {
+                    row[j] = parseInt(initializer);
+                    initializer++;
+                }
+                field[i] = row;
+            }
+
+            var startPosition = args[1].split(" ");
+            var row = parseInt(startPosition[0]);
+            var col = parseInt(startPosition[1]);
+
+            var visited = {};
+            visited[row, col] = true;
+            var SUM_OF_NUMBERS = parseInt(field[row][col]);
+            var NUMBER_OF_JUMPS = 0;
+            var counter = 0;
+
+            while (true) {
+
+                row += parseInt(jumps[counter][0]);
+                col += parseInt(jumps[counter][1]);
+                NUMBER_OF_JUMPS++;
+
+                if (visited[row, col] == undefined) {
+                    visited[row, col] = true;
+
+                    if (row < 0 || row >= N || col < 0 || col >= M) {
+
+                        return "escaped " + SUM_OF_NUMBERS;
+                    }
+                    else {
+                        SUM_OF_NUMBERS += parseInt(field[row][col]);
+                    }
+
+                    if (counter < J - 1) {
+                        counter++;
+                    }
+                    else {
+                        counter = 0;
+                    }
+                }
+                else if (visited[row, col] == true) {
+                    return "caught " + NUMBER_OF_JUMPS;
+                }
+            }
+        }
+
+
+        function Solve(args) {
+            var values = args[0].split(' ');
+            var rows = parseInt(values[0]);
+            var columns = parseInt(values[1]);
+            var jumpsCount = parseInt(values[2]);
+
+            values = args[1].split(' ');
+            var startR = parseInt(values[0]);
+            var startC = parseInt(values[1]);
+
+            var jumps = new Array();
+            var field = new Array();
+            var number = 1;
+            for (var row = 0; row < rows; row++) {
+                var tempRow = new Array();
+                for (var cols = 0; cols < columns; cols++) {
+                    tempRow.push(number);
+                    number++;
+                }
+                field.push(tempRow);
+            }
+            for (var i = 0; i < jumpsCount; i++) {
+                values = args[i + 2].split(' ');
+                var tempJump = new Array();
+                tempJump.push(parseInt(values[0]));
+                tempJump.push(parseInt(values[1]));
+                jumps.push(tempJump);
+            }
+            var score = 0;
+            var curR = startR;
+            var curC = startC;
+            var jumpIndex = 0;
+            var escapeString = 'escaped ';
+            var caughtString = 'caught ';
+            var numberOfJumps = 0;
+            do {
+                score += field[curR][curC];
+                field[curR][curC] = 0;
+                curR += jumps[jumpIndex][0];
+                curC += jumps[jumpIndex][1];
+                jumpIndex++;
+                numberOfJumps++;
+                if (jumpIndex == jumpsCount) {
+                    jumpIndex = 0;
+                }
+                if (curR >= rows || curC >= columns || curR<0 || curC<0) {
+
+                    return escapeString + score;
+                }
+                if (field[curR][curC] == 0) {
+
+                    return caughtString + numberOfJumps;
+                }
+
+            } while (true);
+        }
+
+
+
+
+
+
+        function main() {
+            var args = [
+                '29',
+                '68',
+                'I dont give a damn',
+                'How its supposed to be  That might work for you  It dont work for',
+                'me    You write your truth   And Ill write mine',
+                ' One mans ceilings   Another mans sky high    Flying like an aeroplane  Cry like the lonely whistle of a long black',
+                'train  Dance in the pouring rain  Spit in the eye of a hurricane  Who said life',
+                'has got to be so cruel',
+                ' Loves the only',
+                'rule  ',
+                ' Its written in the stars ',
+                'Where I fit in  Its going',
+                'to hurt sometimes   You got to lose to win    Youve got your sins   And I',
+                'got mine  Sell',
+                'your secrets kiss them',
+                'all goodbye    Flying like an aeroplane  Alive like a lonely note from John Coltrane',
+                '  From httpwwwelyricsnet   Run like',
+                'its a getaway  Say those things that you shouldnt say  Think about',
+                'it wouldnt that be cool  If loves the only rule    Might be a wrecking ball  Or just a wake up call  Dont',
+                'matter',
+                'where the pieces fall    Oooooh Oooooh Oooooh    Im gonna fly like an aeroplane  Cry like the whistle of a long black',
+                'train  Dance in the pouring rain',
+                'Im alive like a lonely note from John',
+                'Coltrane  Run like its a getaway  Say those things that you shouldnnt say    Where love loves',
+                'the only rule ',
+                'Yes love',
+                'loves the only rule  Ah love loves the only',
+                'rule',
+                ' Love',
+                'only rule  Loves the',
+                'only rule    Oooooh Oooooh  Oooooh',
+            ];
+
+            console.log(Solve(args));
+        }
+        function Solve(args) {
+            var lines = parseInt(args[0]);
+            var width = parseInt(args[1]);
+            var allWords = [];
+            for (var i = 0; i < lines; i++) {
+                var rawWords = args[i + 2].split(' ');
+                for (var j = 0; j < rawWords.length; j++) {
+                    if (rawWords[j].length > 0) {
+                        allWords.push(rawWords[j]);
+                    }
+                }
+            }
+            var output = new String();
+            var words = [];
+            var gaps = new Array();
+            var remaining = width;
+            var newWord;
+
+            do {
+                newWord = new String(allWords.shift());
+                words.push(newWord);
+                gaps.push(1);
+                remaining -= 1 + newWord.length;
+                if (remaining <= 0) {
+                    gaps.pop();
+                    remaining++;
+                    if (remaining <= -1) {
+                        var lastWord = words.pop();
+                        allWords.unshift(lastWord);
+                        remaining += lastWord.length;
+                        gaps.pop();
+                        remaining++;
+                    }
+                    justify(words, gaps, remaining);
+                    output += buildLine(words, gaps);
+                    words = new Array();
+                    gaps = new Array();
+                    remaining = width;
+                }
+            }
+            while (allWords.length > 0);
+            if (words.length != 0) {
+                gaps.pop();
+                remaining++;
+                justify(words, gaps, remaining);
+                output += buildLine(words, gaps);
+            }
+            return output;
+
+            function justify(words, gaps, remaining) {
+                var globalGain = parseInt(remaining / gaps.length);
+                var frontMembersGain = parseInt(remaining % gaps.length);
+
+                if (globalGain != 0) {
+                    for (var i = 0; i < gaps.length; i++) {
+                        gaps[i] += globalGain;
+                    }
+                }
+                if (frontMembersGain != 0) {
+                    for (var i = 0; i < frontMembersGain; i++) {
+                        gaps[i]++;
+                    }
+                }
+            }
+            function buildLine(words, gaps) {
+                var line = new String();
+                if (words.length == 1) {
+                    var newWord = words.shift();
+                    for (var i = 0; i < newWord.length; i++) {
+                        line += newWord[i];
+                    }
+                    line += '\n';
+                    return line;
+                }
+                do {
+                    var newWord = words.shift();
+                    for (var i = 0; i < newWord.length; i++) {
+                        line += newWord[i];
+                    }
+                    if (words.length == 0) {
+                        break;
+                    }
+                    var spaceCount = gaps.shift();
+                    for (var i = 0; i < spaceCount; i++) {
+                        line += ' ';
+                    }
+                }
+                while (words.length > 0);
+
+                line += '\n';
+                return line;
+            }
+        }
+    </script>
+
+</body>
+</html>

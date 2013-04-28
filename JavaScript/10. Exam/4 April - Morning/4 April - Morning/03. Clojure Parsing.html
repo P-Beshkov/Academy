@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+            main();
+            function main() {
+                var args = [
+                    '(def func 10)',
+                    '(def newFunc (+  func 2))',
+                    '(def sumFunc (+ func func newFunc 0 0 0))',
+                    '(* sumFunc 2)',                    
+                ];
+                console.log(Solve(args));
+            }
+
+            function Solve(args) {
+                var instruction;
+                var lineNumber = 1;
+                var functions = new Array();
+                var tempVal;
+                var name;
+                var result;
+                var params;
+                var operation;
+
+                do {
+                    instruction = args.shift();
+                    instruction = instruction.substr(1, instruction.length - 2);
+                    params = instruction.split(' ');
+                    params = clearEmptyLines(params);
+                    operation = params.shift();
+                    result = proccessOperation(operation, params);
+                    if (isNaN(result) && result.indexOf('Division') != -1) {
+                        return result;
+                    }
+                    if (isNaN(result) && result == 'Definition') {
+                        name = params.shift();
+
+                        if (params.length == 1) {
+                            result = getValue(params[0]);
+                        }
+                        else {
+                            var oper = params.shift();
+                            result = proccessOperation(oper, params);
+                            if (isNaN(result)) {
+                                return result;
+                            }
+                        }
+                        functions.push([name, result]);
+                    }
+                    var len = args.length;
+                    if (len == 0) {
+                        return result;
+                    }
+                    lineNumber++;
+                }
+                while (args.length > 0);
+
+                function proccessOperation(operation, params) {
+                    var result;
+                    switch (operation) {
+                        case '+':
+                            result = 0;
+                            do {
+                                tempVal = getValue(params.shift());
+                                result += tempVal;
+                            }
+                            while (params.length > 0);
+                            break;
+                        case '-':
+                            result = getValue(params.shift());
+                            while (params.length > 0) {
+                                tempVal = getValue(params.shift());
+                                result -= tempVal;
+                            }
+                            break;
+                        case '*':
+                            result = getValue(params.shift());
+                            while (params.length > 0) {
+                                tempVal = getValue(params.shift());
+                                result *= tempVal;
+                            }
+                            break;
+                        case '/':
+                            result = getValue(params.shift());
+                            while (params.length > 0) {
+                                tempVal = getValue(params.shift());
+                                if (tempVal == 0) {
+                                    result = 'Division by zero! At Line:' + lineNumber;
+                                    return result;
+                                }
+                                result /= tempVal;
+                                result = parseInt(result);
+                            }
+                            break;
+                        case 'def':
+                            return 'Definition';
+                        default:
+                            throw new Error('Not recognized operation inner');
+                    }
+                    return result;
+                }
+            
+                function getValue(rawValue) {
+                    var number;
+                    number = parseInt(rawValue);
+                    if (!isNaN(number)) {
+                        return number;
+                    }
+                    for (var i = 0; i < functions.length; i++) {
+                        if (functions[i][0] == rawValue) {
+                            return functions[i][1];
+                        }
+                    }
+                }
+                function clearEmptyLines(params) {
+                    var clearedParams = new Array();
+                    for (var i = 0; i < params.length; i++) {
+                        if (params[i].length != 0) {
+                            clearedParams.push(params[i]);
+                        }
+                        if (params[i].indexOf(')') != -1) {
+                            clearedParams.pop();
+                            if (params[i].length != 1) {
+                                clearedParams.push(params[i].substr(0, params[i].length - 1));
+                            }
+                        }
+                        if (params[i].indexOf('(') != -1) {
+                            clearedParams.pop();
+                            if (params[i].length != 1) {
+                                clearedParams.push(params[i].substr(1, params[i].length - 1));
+                            }
+                        }
+                    }
+                    return clearedParams;
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Functions - the arguments Object</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="#" class="js-console-btn" onclick="testFunction()">Test function</a>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        //Write a function that counts how many times given number appears in given array. 
+        //Write a test function to check if the function is working correctly.
+        function testFunction() {
+            var array = [1, 2, 23, 4, 5, 4, 23, 1, 2, 23, 1];
+            var number = 2;
+            jsConsole.writeLine("Number "+number+" appears "+countAppears(array,number)+" times");
+        }
+        function countAppears(array, number) {
+            var counts = 0;
+            for (var i in array) {
+                if (number == i) {
+                    counts++;
+                }
+            }
+            return counts;
+        }
+    </script>
+
+</body>
+</html>

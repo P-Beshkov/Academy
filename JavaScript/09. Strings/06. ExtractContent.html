@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strings - HtmlEscape</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea id="text">Enter here html</textarea>
+    <a href="#" class="js-console-btn" onclick="main()">Extract</a>
+    <div id="container"></div>
+   <script src="scripts/js-console.js"> </script>
+    <script>
+        //Write a function that extracts the content of a html page given as text. 
+        //The function should return anything that is in a tag, without the tags;
+        function main() {
+            var text = new String(document.getElementById("text").value);
+            jsConsole.writeLine(extractContent(text));
+        }
+
+        function extractContent(text) {
+            var extractedText = buildStringBuilder();
+            var indexRigthBraket = text.indexOf(">");
+            while (indexRigthBraket > -1 && indexRigthBraket != text.length - 1) {
+                if (text[indexRigthBraket + 1] != "<") {
+                    var stringStart = text.substring(indexRigthBraket + 1, text.indexOf("<", indexRigthBraket + 1));                    
+                    extractedText.append(stringStart).append(" ");
+                }
+                var indexRigthBraket = text.indexOf(">", indexRigthBraket + 1);
+            }
+            return extractedText.toString();
+        }
+        function buildStringBuilder() {
+            return {
+                strs: [],
+                len: 0,
+                append: function (str) {
+                    this.strs[this.len++] = str;
+                    return this;
+                },
+                toString: function () {
+                    return this.strs.join("");
+                }
+            };
+        }
+    </script>
+
+</body>
+</html>

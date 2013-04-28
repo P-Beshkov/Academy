@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Using Objects - Overview</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <!--Write functions for working with shapes in  standard Planar coordinate system
+    Points are represented by coordinates P(X, Y)
+    Lines are represented by two points, marking their beginning and ending
+    L(P1(X1,Y1),P2(X2,Y2))
+    Calculate the distance between two points
+    Check if three segment lines can form a triangle-->
+    <label>First point X: </label>
+    <input type="text" id="firstX" />
+    <label>Second point X:</label>
+    <input type="text" id="secondX" />
+    <br />
+    <label>First point Y: </label>
+    <input type="text" id="firstY" />
+    <label>Second point Y:</label>
+    <input type="text" id="secondY" />
+    <!--<br />
+    <label>Second point Y: </label>
+    <input type="text" id="Text1" />
+    <label>Second point Y:</label>
+    <input type="text" id="Text2" />-->
+  
+    <div id="js-console"></div>
+    <a href="#" class="js-console-btn" onclick="calcDistance()">Calculate distance</a>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        function calcDistance() {
+            var firstPoint = new point(parseInt(document.getElementById("firstX").value), parseInt(document.getElementById("firstY").value));
+            var secondPoint = new point(parseInt(document.getElementById("secondX").value), parseInt(document.getElementById("secondY").value));
+            jsConsole.writeLine("Distance between = " + calculateDistanceBetween(firstPoint, secondPoint));
+            jsConsole.writeLine(point.x);
+            jsConsole.writeLine(point.y);
+        }
+        function point(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        function calculateDistanceBetween(first,second) {
+            var result = 0;
+            result = Math.sqrt((first.x - second.x) * (first.x - second.x) + (first.y - second.y)*(first.y - second.y));
+            return result;
+        }
+        //TODO: function IsTrianglePosible()
+    </script>
+</body>
+</html>

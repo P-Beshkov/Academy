@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>JS Console - Example</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="js-console">
+    </div>
+    <script src="scripts/js-console.js">
+    </script>
+    <script>
+        //Write a function that checks if a given object contains a given property
+        //var obj  = …;
+        //var hasProp = hasProperty(obj,"length");
+        function hasPropety(obj,prop) {
+            for (var item in obj) {
+                if (item==prop) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+    </script>
+</body>
+</html>

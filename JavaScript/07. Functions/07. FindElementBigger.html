@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Functions - Sum of Even Numbers</title>
+	<link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>							  
+
+	<label for="array">Enter array of integers(separated by interval):</label>
+    <input type="text" id="array" />
+    <button onclick="firstBiggerThanItsNeighboors()">Run script</button>
+
+    <div id="js-console"></div>    
+	<script src="scripts/js-console.js"></script>
+	<script>
+	    function firstBiggerThanItsNeighboors() {
+	        var array = document.getElementById("array").value.split(' ');
+	        var bestIndex = -1;
+	        for (var i = 0; i < array.length; i++) {
+	            if (isBiggerThanNeighboors(i, array)) {
+	                bestIndex = i;
+	                break;
+	            }
+	        }
+	        if (bestIndex != -1) {
+	            jsConsole.writeLine("First number that is bigger than its neighbors is:");
+	            jsConsole.writeLine(array[bestIndex] + "!! Its neighbors are ("
+                    + array[bestIndex - 1] + " " + array[bestIndex + 1] + ").");
+	        }
+	        else {
+	            jsConsole.writeLine("There is no such number that is bigger than its two neighbors!");
+	        }
+
+	    }
+
+	    
+	    function isBiggerThanNeighboors(position, array) {
+	        position = position - 0;
+	        var i;
+	        for (i = 0; i < array.length; i++) {
+	            array[i] = parseInt(array[i]);
+	        }
+
+	        if (position == 0 || position >= array.length - 1) {
+	            return false
+	        }
+	        else {
+	            if (array[position] > array[position - 1] && array[position] > array[position + 1]) {
+	                return true;
+	            }
+	            else {
+	                return false;
+	            }
+	        }
+	    }
+	</script>
+
+</body>
+</html>

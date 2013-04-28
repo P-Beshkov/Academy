@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Functions - Parameters</title>
+    <link href="styles/js-console.css" rel="stylesheet" />
+</head>
+<body>
+    <label for="inputText">Enter input text:</label>
+    <input type="text" id="input" />
+    <label for="word">Enter word for search:</label>
+    <input type="text" id="word" />
+    <input type="checkbox" id="case" value="Case Sensitive" /> 
+    <a href="#" class="js-console-btn" onclick="findWords()">Search word</a>
+    <div id="js-console"></div>
+    <script src="scripts/js-console.js"></script>
+    <script>
+        //<!--Write a function that finds all the occurrences of word in a text
+        //   The search can case sensitive or case insensitive
+        //   Use function overloading
+        function findWords() {
+            if (document.getElementById("case").isDisabled) {
+                searchWords();
+            }
+            else {
+                searchWords(true);
+            }
+        }
+        function searchWords(caseSensitive) {
+            caseSensitive = caseSensitive || false;
+            var wordLength = word.length;
+            var index = text.indexOf(word, index);
+            var counter = 0;
+            var text =new String(document.getElementById("input").value);
+            
+            while (index != -1) {
+                counter++;
+                index += wordLength;
+                index = text.indexOf(word, index);
+            }
+            jsConsole.writeLine(counter + " occurrences");
+        }
+    </script>
+</body>
+</html>
